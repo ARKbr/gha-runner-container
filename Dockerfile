@@ -64,7 +64,8 @@ RUN mkdir -p /opt/hostedtoolcache
 RUN chown -R runner:runner /opt/hostedtoolcache
 
 COPY entrypoint.sh /runner/entrypoint.sh
-RUN chmod +x /runner/entrypoint.sh && chown runner:runner /runner/entrypoint.sh
+RUN chmod +x /runner/entrypoint.sh
+RUN chown runner:runner /runner/entrypoint.sh
 
 USER runner
 WORKDIR /runner
