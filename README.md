@@ -87,7 +87,7 @@ docker run -d \
 docker build -t github-runner .
 
 # Build with specific version
-docker build --build-arg RUNNER_VERSION=2.312.0 -t github-runner .
+docker build --build-arg RUNNER_VERSION=2.328.0 -t github-runner .
 ```
 
 ## Included Features
