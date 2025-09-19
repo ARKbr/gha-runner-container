@@ -34,8 +34,8 @@ EPHEMERAL=true
 
 The project automatically builds and publishes images to:
 
-- **Docker Hub**: `arkbr/gha-runner-container`
-- **GitHub Container Registry**: `ghcr.io/arkbr/gha-runner-container`
+- **Docker Hub**: `leogomide/gha-runner-container`
+- **GitHub Container Registry**: `ghcr.io/leogomide/gha-runner-container`
 
 ### Available Tags
 
