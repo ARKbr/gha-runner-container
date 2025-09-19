@@ -50,7 +50,8 @@ RUN if [ "${TARGETARCH}" = "amd64" ]; then \
     fi && \
     curl -o actions-runner-linux-${RUNNER_ARCH}-${RUNNER_VERSION}.tar.gz -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-${RUNNER_ARCH}-${RUNNER_VERSION}.tar.gz \
     && tar xzf actions-runner-linux-${RUNNER_ARCH}-${RUNNER_VERSION}.tar.gz \
-    && rm actions-runner-linux-${RUNNER_ARCH}-${RUNNER_VERSION}.tar.gz
+    && rm actions-runner-linux-${RUNNER_ARCH}-${RUNNER_VERSION}.tar.gz \
+    && echo "Runner version: ${RUNNER_ARCH}-${RUNNER_VERSION}"
 
 RUN ./bin/installdependencies.sh
 
@@ -72,4 +73,4 @@ USER runner
 VOLUME ["/runner/_work"]
 
 SHELL ["/bin/bash", "-c"]
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/runner/entrypoint.sh"]
