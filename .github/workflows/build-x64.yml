@@ -11,6 +11,7 @@ env:
 jobs:
   determine-runner:
     runs-on: ubuntu-latest
+    environment: default
     outputs:
       runner: ${{ steps.set-runner.outputs.use-runner }}
     steps:
