@@ -62,16 +62,12 @@ fi
 ./config.sh $CONFIG_ARGS
 
 cleanup() {
-    if [ "$EPHEMERAL" != "true" ]; then
-        echo "Removing runner..."
-        ./config.sh remove --token "$REGISTRATION_TOKEN"
-    else
-        echo "Ephemeral runner - no manual cleanup needed"
-    fi
+  echo "Removing runner $RUNNER_NAME"
+  ./config.sh remove --token "$REGISTRATION_TOKEN"
 }
 
 trap 'cleanup; exit 130' INT
 trap 'cleanup; exit 143' TERM
 
-echo "Starting GitHub Actions Runner..."
+echo "Starting GitHub Actions Runner $RUNNER_NAME"
 ./run.sh & wait $!
