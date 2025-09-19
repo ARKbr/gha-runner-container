@@ -5,7 +5,7 @@ services:
     build:
       context: .
       args:
-        RUNNER_VERSION: ${RUNNER_VERSION:-2.311.0}
+        RUNNER_VERSION: ${RUNNER_VERSION:-2.328.0}
         UBUNTU_VERSION: ${UBUNTU_VERSION:-24.04}
     environment:
       - REPO_URL=${REPO_URL}
@@ -15,5 +15,13 @@ services:
       - EPHEMERAL=${EPHEMERAL:-false}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - runner_work:/runner/_work
+      - runner_toolcache:/opt/hostedtoolcache
     restart: unless-stopped
     privileged: true
+    deploy:
+      replicas: 3
+
+volumes:
+  runner_work:
+  runner_toolcache:

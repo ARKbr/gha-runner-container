@@ -16,7 +16,12 @@ if [ -z "$REGISTRATION_TOKEN" ]; then
     exit 1
 fi
 
-RUNNER_NAME=${RUNNER_NAME:-"docker-runner-$(hostname)"}
+if [ -z "$RUNNER_NAME" ]; then
+    RUNNER_NAME="docker-runner-$(hostname)"
+else
+    RUNNER_NAME="${RUNNER_NAME}-$(hostname)"
+fi
+
 EPHEMERAL=${EPHEMERAL:-"false"}
 DISABLE_UPDATE=${DISABLE_UPDATE:-"false"}
 

@@ -81,9 +81,52 @@ docker run -d \
   leogomide/gha-runner:latest-arm64
 ```
 
+### Using Docker Compose
+
+1. Create a `.env` file with your configuration:
+```bash
+REPO_URL=https://github.com/owner/repo
+REGISTRATION_TOKEN=your_token_here
+RUNNER_NAME=my-docker-runner
+RUNNER_LABELS=docker,linux,custom
+EPHEMERAL=false
+```
+
+2. Start the runner:
+```bash
+docker-compose up -d
+```
+
+3. Check logs:
+```bash
+docker-compose logs -f github-runner
+```
+
+4. Stop the runner:
+```bash
+docker-compose down
+```
+
+The Docker Compose configuration includes persistent volumes for logs and tool cache, ensuring data persistence across container restarts.
+
+#### Scaling Runners
+
+To run multiple runner instances (useful for handling multiple parallel jobs):
+
+```bash
+# Scale to 5 runners
+docker-compose up -d --scale github-runner=5
+
+# Or modify docker-compose.yml to set default replicas
+# deploy:
+#   replicas: 3
+```
+
+Each runner instance will have a unique name with the container hostname appended (e.g., `my-runner-abc123`, `my-runner-def456`), preventing naming conflicts.
+
 ### Building the image:
 ```bash
-# Build with default version (2.311.0)
+# Build with default version (2.328.0)
 docker build -t github-runner .
 
 # Build with specific version
