@@ -62,8 +62,12 @@ fi
 ./config.sh $CONFIG_ARGS
 
 cleanup() {
-  echo "Removing runner $RUNNER_NAME"
-  ./config.sh remove --token "$REGISTRATION_TOKEN"
+    if [ "$EPHEMERAL" != "true" ]; then
+        echo "Removing runner..."
+        ./config.sh remove --token "$REGISTRATION_TOKEN"
+    else
+        echo "Ephemeral runner - no manual cleanup needed"
+    fi
 }
 
 trap 'cleanup; exit 130' INT
@@ -71,13 +75,4 @@ trap 'cleanup; exit 143' TERM
 
 echo "Starting GitHub Actions Runner $RUNNER_NAME"
 
-if [ "$EPHEMERAL" = "true" ]; then
-    echo "Running in ephemeral mode - container will terminate after job completion"
-    ./run.sh
-    EXIT_CODE=$?
-    echo "Ephemeral runner finished with exit code: $EXIT_CODE"
-    cleanup
-    exit $EXIT_CODE
-else
-    ./run.sh & wait $!
-fi
+./run.sh & wait $!
