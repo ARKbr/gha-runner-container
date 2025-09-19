@@ -70,7 +70,7 @@ RUN chown runner:runner /runner/entrypoint.sh
 
 USER runner
 
-VOLUME ["/runner/_work"]
+#VOLUME ["/runner/_work"]
 
 SHELL ["/bin/bash", "-c"]
 ENTRYPOINT ["/runner/entrypoint.sh"]
