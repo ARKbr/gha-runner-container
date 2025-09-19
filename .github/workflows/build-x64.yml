@@ -6,7 +6,7 @@ on:
 #    - cron: '0 0 * * *' # Daily at midnight UTC
 
 env:
-  DOCKERHUB_IMAGE: arkbr/gha-runner-container
+  DOCKERHUB_IMAGE: leogomide/gha-runner
   GHCR_IMAGE: ghcr.io/${{ github.repository }}
 
 jobs:

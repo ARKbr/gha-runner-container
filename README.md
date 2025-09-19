@@ -53,7 +53,7 @@ docker run -d \
   -e RUNNER_LABELS=docker,linux,custom \
   -v /var/run/docker.sock:/var/run/docker.sock \
   --privileged \
-  arkbr/gha-runner-container:latest-x64
+  leogomide/gha-runner:latest-x64
 
 # ARM64 architecture
 docker run -d \
@@ -63,7 +63,7 @@ docker run -d \
   -e RUNNER_LABELS=docker,linux,custom \
   -v /var/run/docker.sock:/var/run/docker.sock \
   --privileged \
-  arkbr/gha-runner-container:latest-arm64
+  leogomide/gha-runner:latest-arm64
 ```
 
 ### Building the image:
