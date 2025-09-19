@@ -70,4 +70,14 @@ trap 'cleanup; exit 130' INT
 trap 'cleanup; exit 143' TERM
 
 echo "Starting GitHub Actions Runner $RUNNER_NAME"
-./run.sh & wait $!
+
+if [ "$EPHEMERAL" = "true" ]; then
+    echo "Running in ephemeral mode - container will terminate after job completion"
+    ./run.sh
+    EXIT_CODE=$?
+    echo "Ephemeral runner finished with exit code: $EXIT_CODE"
+    cleanup
+    exit $EXIT_CODE
+else
+    ./run.sh & wait $!
+fi
