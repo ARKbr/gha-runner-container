@@ -68,8 +68,8 @@ RUN chmod +x /runner/entrypoint.sh
 RUN chown runner:runner /runner/entrypoint.sh
 
 USER runner
-WORKDIR /runner
 
 VOLUME ["/runner/_work"]
 
+SHELL ["/bin/bash", "-c"]
 ENTRYPOINT ["/entrypoint.sh"]
