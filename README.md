@@ -24,9 +24,10 @@ REGISTRATION_TOKEN=<your-registration-token>
 RUNNER_NAME=<your-runner-name>
 
 # OPTIONAL Comma-separated runner labels (default: docker,linux)
-RUNNER_LABELS=<your-runner-name>
+RUNNER_LABELS=<label1,label2>
 
 # OPTIONAL Run in ephemeral mode (default: false)
+# https://docs.github.com/pt/actions/reference/runners/self-hosted-runners#ephemeral-runners-for-autoscaling
 EPHEMERAL=true
 
 ````
