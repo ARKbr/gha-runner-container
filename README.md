@@ -2,6 +2,8 @@
 
 Docker container for automated GitHub Actions self-hosted runners.
 
+Inspired from https://github.com/chaddyc/gha-runner and tweaked for my personal needs
+
 ## How to get the Registration Token
 
 1. Access your repository on GitHub
