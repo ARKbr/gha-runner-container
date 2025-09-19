@@ -72,5 +72,4 @@ WORKDIR /runner
 
 VOLUME ["/runner/_work"]
 
-SHELL ["/bin/bash", "-c"]
 ENTRYPOINT ["/entrypoint.sh"]
