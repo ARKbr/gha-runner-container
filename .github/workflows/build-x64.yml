@@ -58,7 +58,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             RUNNER_VERSION=${{ steps.runner-version.outputs.version }}
-            TARGETARCH=x64
+            TARGETARCH=amd64
           cache-from: type=gha
           cache-to: type=gha,mode=max
 

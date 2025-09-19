@@ -41,7 +41,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
 
 WORKDIR /runner
 
-RUN if [ "${TARGETARCH}" = "x64" ]; then \
+RUN if [ "${TARGETARCH}" = "amd64" ]; then \
       export RUNNER_ARCH="x64"; \
     elif [ "${TARGETARCH}" = "arm64" ]; then \
       export RUNNER_ARCH="arm64"; \
