@@ -2,8 +2,8 @@ name: Build and Push x64 Runner Image
 
 on:
   workflow_dispatch:
-#  schedule:
-#    - cron: '0 0 * * *' # Daily at midnight UTC
+  schedule:
+    - cron: '0 0 * * *' # Daily at midnight UTC
 
 env:
   DOCKERHUB_IMAGE: leogomide/gha-runner
