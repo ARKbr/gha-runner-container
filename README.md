@@ -23,14 +23,27 @@ REGISTRATION_TOKEN=<your-registration-token>
 # OPTIONAL Runner name (default: docker-runner-{hostname})
 RUNNER_NAME=<your-runner-name>
 
-# OPTIONAL Comma-separated runner labels (default: docker,linux)
+# OPTIONAL Additional comma-separated runner labels
+# Default labels are always included: docker,linux,ubuntu-{version},runner-{version}
 RUNNER_LABELS=<label1,label2>
 
 # OPTIONAL Run in ephemeral mode (default: false)
 # https://docs.github.com/pt/actions/reference/runners/self-hosted-runners#ephemeral-runners-for-autoscaling
-EPHEMERAL=true
+EPHEMERAL=false
+
+# OPTIONAL Disable automatic runner software updates (default: false)
+# https://docs.github.com/pt/actions/reference/runners/self-hosted-runners#runner-software-updates-on-self-hosted-runners
+DISABLE_UPDATE=true
 
 ````
+
+## Volumes
+
+For persistent logs and runner data between container restarts:
+
+- **`/runner/_work`** - Job execution logs and temporary files
+- **`/opt/hostedtoolcache`** - Tool cache for faster job execution (optional)
+
 ## Usage
 
 ### Using Pre-built Images
@@ -53,6 +66,8 @@ docker run -d \
   -e RUNNER_NAME=my-runner \
   -e RUNNER_LABELS=docker,linux,custom \
   -v /var/run/docker.sock:/var/run/docker.sock \
+  -v runner_work:/runner/_work \
+  -v runner_toolcache:/opt/hostedtoolcache \
   --privileged \
   leogomide/gha-runner:latest-x64
 
@@ -63,6 +78,8 @@ docker run -d \
   -e RUNNER_NAME=my-runner \
   -e RUNNER_LABELS=docker,linux,custom \
   -v /var/run/docker.sock:/var/run/docker.sock \
+  -v runner_work:/runner/_work \
+  -v runner_toolcache:/opt/hostedtoolcache \
   --privileged \
   leogomide/gha-runner:latest-arm64
 ```
