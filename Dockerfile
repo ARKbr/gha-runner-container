@@ -1,7 +1,7 @@
 ARG UBUNTU_VERSION=24.04
 FROM ubuntu:${UBUNTU_VERSION}
 
-LABEL org.opencontainers.image.source="https://github.com/leogomide/gha-runner-container"
+LABEL org.opencontainers.image.source="https://github.com/leogomide/gha-runner"
 LABEL org.opencontainers.image.description="GitHub Actions Self-Hosted Runner Container"
 
 ARG RUNNER_VERSION=2.311.0
