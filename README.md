@@ -33,7 +33,7 @@ EPHEMERAL=false
 
 # OPTIONAL Disable automatic runner software updates (default: false)
 # https://docs.github.com/pt/actions/reference/runners/self-hosted-runners#runner-software-updates-on-self-hosted-runners
-DISABLE_UPDATE=true
+DISABLE_UPDATE=false
 
 ````
 
