@@ -7,7 +7,6 @@ on:
 
 env:
   DOCKERHUB_IMAGE: leogomide/gha-runner
-  GHCR_IMAGE: ghcr.io/${{ github.repository }}
 
 jobs:
   build-x64:
@@ -15,7 +14,6 @@ jobs:
     environment: default
     permissions:
       contents: read
-      packages: write
 
     steps:
       - name: Checkout repository
@@ -39,12 +37,6 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Extract metadata
         id: meta
@@ -52,7 +44,6 @@ jobs:
         with:
           images: |
             ${{ env.DOCKERHUB_IMAGE }}
-            ${{ env.GHCR_IMAGE }}
           tags: |
             type=raw,value=${{ steps.runner-version.outputs.version }}-x64
             type=raw,value=latest-x64
@@ -79,5 +70,3 @@ jobs:
           echo "- **Image Tags**:" >> $GITHUB_STEP_SUMMARY
           echo "  - \`${{ env.DOCKERHUB_IMAGE }}:${{ steps.runner-version.outputs.version }}-x64\`" >> $GITHUB_STEP_SUMMARY
           echo "  - \`${{ env.DOCKERHUB_IMAGE }}:latest-x64\`" >> $GITHUB_STEP_SUMMARY
-          echo "  - \`${{ env.GHCR_IMAGE }}:${{ steps.runner-version.outputs.version }}-x64\`" >> $GITHUB_STEP_SUMMARY
-          echo "  - \`${{ env.GHCR_IMAGE }}:latest-x64\`" >> $GITHUB_STEP_SUMMARY

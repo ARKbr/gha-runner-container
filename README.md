@@ -48,10 +48,7 @@ For persistent logs and runner data between container restarts:
 
 ### Using Pre-built Images
 
-The project automatically builds and publishes images to:
-
-- **Docker Hub**: `leogomide/gha-runner`
-- **GitHub Container Registry**: `ghcr.io/leogomide/gha-runner`
+The project automatically builds and publishes images to **Docker Hub**: `leogomide/gha-runner`
 
 ### Available Tags
 
