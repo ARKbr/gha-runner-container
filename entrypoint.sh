@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Starting..."
+
 set -e
 
 if [ -z "$REPO_URL" ]; then
