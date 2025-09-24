@@ -4,6 +4,9 @@ echo "Starting..."
 
 set -e
 
+# Fix Docker socket permissions
+sudo chmod 666 /var/run/docker.sock
+
 if [ -z "$REPO_URL" ]; then
     echo "Error: REPO_URL environment variable is required"
     echo "Example: https://github.com/owner/repo"
