@@ -61,6 +61,9 @@ RUN useradd -m -s /bin/bash runner && \
 RUN groupadd -f docker && usermod -aG docker runner
 RUN chown -R runner:runner /runner
 
+# Set docker group ID to match host (common docker group IDs)
+RUN groupmod -g 999 docker || groupmod -g 998 docker || true
+
 RUN mkdir -p /opt/hostedtoolcache
 RUN chown -R runner:runner /opt/hostedtoolcache
 
