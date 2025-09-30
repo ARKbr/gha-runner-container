@@ -12,23 +12,24 @@ env:
   DOCKERHUB_IMAGE: leogomide/gha-runner
 
 jobs:
-  determine-runner:
-    runs-on: ubuntu-latest
-    environment: default
-    outputs:
-      runner: ${{ steps.set-runner.outputs.use-runner }}
-    steps:
-      - name: Determine which runner to use
-        id: set-runner
-        uses: jimmygchen/runner-fallback-action@v0.1.1
-        with:
-          primary-runner: "self-hosted"
-          fallback-runner: "ubuntu-latest"
-          github-token: ${{ secrets.YOUR_GITHUB_TOKEN }}
+#  determine-runner:
+#    runs-on: ubuntu-latest
+#    environment: default
+#    outputs:
+#      runner: ${{ steps.set-runner.outputs.use-runner }}
+#    steps:
+#      - name: Determine which runner to use
+#        id: set-runner
+#        uses: jimmygchen/runner-fallback-action@v0.1.1
+#        with:
+#          primary-runner: "self-hosted"
+#          fallback-runner: "ubuntu-latest"
+#          github-token: ${{ secrets.YOUR_GITHUB_TOKEN }}
 
   build-arm64:
-    needs: determine-runner
-    runs-on: ${{ fromJson(needs.determine-runner.outputs.runner) }}
+#    needs: determine-runner
+#    runs-on: ${{ fromJson(needs.determine-runner.outputs.runner) }}
+    runs-on: "ubuntu-latest"
     environment: default
     permissions:
       contents: read
